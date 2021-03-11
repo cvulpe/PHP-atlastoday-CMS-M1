@@ -112,16 +112,3 @@ function delete($table, $id)
     $stmt = executeQuery($sql, ['id' => $id]);
     return $stmt->affected_rows;
 }
-
-$data = [
-    'username' => 'test2',
-    'admin' => 1,
-    'email' => 'tester@test.local',
-    'password' => '12345'
-];
-
-// $user = create('users', $data);
-// dd($user);
-
-// $id = delete('users', 4);
-// dd($id);
