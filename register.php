@@ -21,26 +21,22 @@
     <div class="auth-content">
         <form action="register.php" method="POST">
             <h2 class="form-title">Register</h2>
-            <!--
-                <div class="msg error">
-                    <li>Username required</li>
-                </div>
-             -->
+            <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
             <div>
                 <label for="username">Username:</label>
-                <input type="text" class="text-input" name="username">
+                <input type="text" class="text-input" name="username" value="<?= $username; ?>">
             </div>
             <div>
                 <label for="email">Email:</label>
-                <input type="email" class="text-input" name="email">
+                <input type="email" class="text-input" name="email" value="<?= $email; ?>">
             </div>
             <div>
                 <label for="password">Password</label>
-                <input type="password" class="text-input" name="password">
+                <input type="password" class="text-input" name="password" value="<?= $password; ?>">
             </div>
             <div>
                 <label for="passwordConf">Repeat password:</label>
-                <input type="password" class="text-input" name="passwordConf">
+                <input type="password" class="text-input" name="passwordConf" value="<?= $passwordConf; ?>">
             </div>
             <div>
                 <button type="submit" name="register-btn" class="btn btn-big">
