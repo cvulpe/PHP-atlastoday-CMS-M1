@@ -1,13 +1,9 @@
 <?php
+require("connect.php");
 
-require_once('connect.php');
-
-// Testing function - Used for debugging and observe the results
-
-function ts($value)
+function dd($value)
 {
     echo "<pre>", print_r($value, true), "</pre>";
-    //* we passed true as a second parameter to remove the value 1 returned by print
     die();
 }
 
@@ -27,14 +23,13 @@ function selectAll($table, $conditions = [])
     global $conn;
     $sql = "SELECT * FROM $table";
     if (empty($conditions)) {
-        //* Return all records.
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $records;
     } else {
-        //* Return records matching the condition.
-
+        // Return records matching the $conditions
+        //$sql = "SELECT * FROM $table WHERE username='test' AND admin= 1;
         $i = 0;
         foreach ($conditions as $key => $value) {
             if ($i === 0) {
@@ -44,7 +39,6 @@ function selectAll($table, $conditions = [])
             }
             $i++;
         }
-
         $stmt = executeQuery($sql, $conditions);
         $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $records;
@@ -55,7 +49,8 @@ function selectOne($table, $conditions)
 {
     global $conn;
     $sql = "SELECT * FROM $table";
-
+    // Return records matching the $conditions
+    //$sql = "SELECT * FROM $table WHERE username='test' AND admin= 1;
     $i = 0;
     foreach ($conditions as $key => $value) {
         if ($i === 0) {
@@ -71,10 +66,62 @@ function selectOne($table, $conditions)
     return $records;
 }
 
+function create($table, $data)
+{
+    global $conn;
+    $sql = "INSERT INTO $table SET ";
+    $i = 0;
+    foreach ($data as $key => $value) {
+        if ($i === 0) {
+            $sql = $sql . " $key=?";
+        } else {
+            $sql = $sql . ", $key=?";
+        }
+        $i++;
+    }
+    $stmt = executeQuery($sql, $data);
+    $id = $stmt->insert_id;
+    return $id;
+}
 
-$conditions = [
-    'admin' => 0,
-    'username' => 'cvulpe'
+
+function update($table, $id, $data)
+{
+    global $conn;
+    $sql = "UPDATE $table SET ";
+    $i = 0;
+    foreach ($data as $key => $value) {
+        if ($i === 0) {
+            $sql = $sql . " $key=?";
+        } else {
+            $sql = $sql . ", $key=?";
+        }
+        $i++;
+    }
+    $sql = $sql . " WHERE id=?";
+    $data['id'] = $id;
+    $stmt = executeQuery($sql, $data);
+    $id = $stmt->insert_id;
+    return $stmt->affected_rows;
+}
+
+function delete($table, $id)
+{
+    global $conn;
+    $sql = "DELETE FROM $table WHERE id=? ";
+    $stmt = executeQuery($sql, ['id' => $id]);
+    return $stmt->affected_rows;
+}
+
+$data = [
+    'username' => 'test2',
+    'admin' => 1,
+    'email' => 'tester@test.local',
+    'password' => '12345'
 ];
-$users = selectOne('users', $conditions);
-ts($users);
+
+// $user = create('users', $data);
+// dd($user);
+
+// $id = delete('users', 4);
+// dd($id);
