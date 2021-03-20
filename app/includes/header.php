@@ -9,12 +9,13 @@
         <li><a href="<?= BASE_URL . '/index.php' ?>">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Services</a></li>
-        <li><a href="<?= BASE_URL . '/register.php' ?>">Sign UP</a></li>
-        <li><a href="<?= BASE_URL . '/login.php' ?>">Login</a></li>
+
+        <?php if (isset($_SESSION['id'])) : ?>
+
         <li>
             <a href="#">
                 <i class="fa fa-user"></i>
-                Chris Nemo
+                <?= $_SESSION['username']; ?>
                 <i class="fa fa-chevron-down" style="font-size:.8em;"></i>
             </a>
             <ul>
@@ -22,5 +23,10 @@
                 <li><a href="#" class="logout">Logout</a></li>
             </ul>
         </li>
+        <?php else : ?>
+        <li><a href="<?= BASE_URL . '/register.php' ?>">Sign UP</a></li>
+        <li><a href="<?= BASE_URL . '/login.php' ?>">Login</a></li>
+        <?php endif; ?>
+
     </ul>
 </header>
