@@ -1,4 +1,5 @@
 <?php
+
 require("connect.php");
 
 function dd($value)
@@ -28,8 +29,7 @@ function selectAll($table, $conditions = [])
         $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $records;
     } else {
-        // Return records matching the $conditions
-        //$sql = "SELECT * FROM $table WHERE username='test' AND admin= 1;
+        // return records matching the conditions
         $i = 0;
         foreach ($conditions as $key => $value) {
             if ($i === 0) {
@@ -84,7 +84,6 @@ function create($table, $data)
     return $id;
 }
 
-
 function update($table, $id, $data)
 {
     global $conn;
@@ -101,7 +100,6 @@ function update($table, $id, $data)
     $sql = $sql . " WHERE id=?";
     $data['id'] = $id;
     $stmt = executeQuery($sql, $data);
-    $id = $stmt->insert_id;
     return $stmt->affected_rows;
 }
 

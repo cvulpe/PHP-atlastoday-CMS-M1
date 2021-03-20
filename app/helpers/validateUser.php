@@ -3,20 +3,26 @@
 function validateUser($user)
 {
     $errors = array();
+
     if (empty($user['username'])) {
-        array_push($errors, 'Username is required!');
+        array_push($errors, "Username is required!");
     }
     if (empty($user['email'])) {
-        array_push($errors, 'Email is required!');
+        array_push($errors, "Email is required!");
     }
     if (empty($user['password'])) {
-        array_push($errors, 'Password is required');
+        array_push($errors, "Password is required!");
     }
     if (empty($user['passwordConf'])) {
-        array_push($errors, 'Password Confirmation is required');
+        array_push($errors, "Please confirm your password!");
     }
-    if ($user['password'] !== $user['passwordConf']) {
-        array_push($errors, 'Passwords do not match!');
+    if ($_POST['password'] !== $user['passwordConf']) {
+        array_push($errors, "Passwords do not match!");
+    }
+
+    $existingUser = selectOne('users', ['email' => $user['email']]);
+    if (isset($existingUser)) {
+        array_push($errors, 'Email is already taken');
     }
 
     return $errors;

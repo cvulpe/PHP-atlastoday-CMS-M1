@@ -1,7 +1,5 @@
-<?php include("path.php"); ?>
+<?php include('path.php'); ?>
 <?php include(ROOT_PATH . "/app/controllers/users.php"); ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,12 +14,12 @@
 </head>
 
 <body>
-    <!--Include Header-->
-    <?php include_once(ROOT_PATH . "/app/includes/header.php"); ?>
+    <?php include(ROOT_PATH . '/app/includes/header.php'); ?>
     <div class="auth-content">
         <form action="register.php" method="POST">
             <h2 class="form-title">Register</h2>
-            <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
+
+            <?php include(ROOT_PATH . '/app/helpers/formErrors.php'); ?>
             <div>
                 <label for="username">Username:</label>
                 <input type="text" class="text-input" name="username" value="<?= $username; ?>">
@@ -43,7 +41,7 @@
                     Register
                 </button>
             </div>
-            <p>Or <a href="<?= BASE_URL . '/login.php' ?>">Login</a></p>
+            <p>Or <a href="<?php echo BASE_URL . '/login.php' ?>">Login</a></p>
         </form>
     </div>
 
