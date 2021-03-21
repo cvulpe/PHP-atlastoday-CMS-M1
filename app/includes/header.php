@@ -22,7 +22,7 @@
                 <?php if ($_SESSION['admin']) : ?>
                 <li><a href="<?= BASE_URL . '/admin/dashboard.php'; ?>">Dashboard</a></li>
                 <?php endif; ?>
-                <li><a href="#" class="logout">Logout</a></li>
+                <li><a href="<?= BASE_URL . '/logout.php'; ?>" class="logout">Logout</a></li>
             </ul>
         </li>
         <?php else : ?>
