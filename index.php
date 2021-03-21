@@ -17,6 +17,8 @@
 <body>
     <!--Include Header-->
     <?php include_once(ROOT_PATH . "/app/includes/header.php"); ?>
+    <?php include_once(ROOT_PATH . "/app/includes/messages.php"); ?>
+
     <!--Page Wrapper-->
     <div class="page-wrapper">
         <!--Post Slider-->

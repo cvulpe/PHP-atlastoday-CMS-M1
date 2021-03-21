@@ -19,7 +19,9 @@
                 <i class="fa fa-chevron-down" style="font-size:.8em;"></i>
             </a>
             <ul>
-                <li><a href="#">Dashboard</a></li>
+                <?php if ($_SESSION['admin']) : ?>
+                <li><a href="<?= BASE_URL . '/admin/dashboard.php'; ?>">Dashboard</a></li>
+                <?php endif; ?>
                 <li><a href="#" class="logout">Logout</a></li>
             </ul>
         </li>
