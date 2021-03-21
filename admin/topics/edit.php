@@ -1,7 +1,7 @@
 <?php include('../../path.php'); ?>
-<?php include(ROOT_PATH . "/app/controllers/users.php");
+<?php include(ROOT_PATH . '/app/controllers/topics.php'); ?>
 
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../../assets/css/style.css" />
     <!--Admin Styling-->
     <link rel="stylesheet" href="../../assets/css/admin.css" />
-    <title>Admin Section | Edit Users</title>
+    <title>Admin Section | Edit Topics</title>
 </head>
 
 <body>
@@ -28,46 +28,24 @@
         <!--Admin Content-->
         <div class="admin-content">
             <div class="button-group">
-                <a href="create.php" class="btn btn-big">Add User</a>
-                <a href="index.php" class="btn btn-big">Manage Users</a>
+                <a href="create.php" class="btn btn-big">Add Topic</a>
+                <a href="index.php" class="btn btn-big">Manage Topics</a>
             </div>
             <div class="content">
-                <h2 class="page-title">Edit User</h2>
+                <h2 class="page-title">Edit Topics</h2>
                 <form action="edit.php" method="POST">
+                    <input type="hidden" name="id" value="<?= $id; ?>">
                     <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
-                    <input type="hidden" name="id" value="<?php echo $id; ?>" />
                     <div>
-                        <label for="username">Username:</label>
-                        <input type="text" class="text-input" name="username" value="<?php echo $username; ?>" />
+                        <label>Name:</label>
+                        <input type="text" name="name" class="text-input" value="<?= $name; ?>" />
                     </div>
                     <div>
-                        <label for="email">Email:</label>
-                        <input type="email" class="text-input" name="email" value="<?php echo $email; ?>" />
+                        <label>Description:</label><br />
+                        <textarea name="description" id="body"><?= $description; ?></textarea>
                     </div>
                     <div>
-                        <label for="password">Password</label>
-                        <input type="password" class="text-input" name="password" value="<?php echo $password; ?>" />
-                    </div>
-                    <div>
-                        <label for="passwordConf">Repeat password:</label>
-                        <input type="password" class="text-input" name="passwordConf"
-                            value="<?php echo $passwordConf; ?>" />
-                    </div>
-                    <div>
-                        <?php if (isset($admin) && $admin == 1) : ?>
-                        <label>
-                            <input type="checkbox" name="admin" checked>
-                            Admin
-                        </label>
-                        <?php else : ?>
-                        <label>
-                            <input type="checkbox" name="admin">
-                            Admin
-                        </label>
-                        <?php endif; ?>
-                    </div>
-                    <div>
-                        <button type="submit" name="update-user" class="btn btn-big">Update User</button>
+                        <button type="submit" name="update-topic" class="btn btn-big">Update Topic</button>
                     </div>
                 </form>
             </div>

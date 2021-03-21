@@ -1,5 +1,6 @@
 <?php include("../../path.php"); ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +54,7 @@
                         </select>
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-big">Add post</button>
+                        <button type="submit" class="btn btn-big" name="add-post">Add Post</button>
                     </div>
                 </form>
             </div>

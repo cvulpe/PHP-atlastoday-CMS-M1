@@ -1,4 +1,5 @@
 <?php include("../../path.php"); ?>
+<?php include(ROOT_PATH . '/app/controllers/topics.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +33,7 @@
             </div>
             <div class="content">
                 <h2 class="page-title">Manage Topics</h2>
+                <?php include(ROOT_PATH . '/app/includes/messages.php'); ?>
                 <table>
                     <thead>
                         <th>N</th>
@@ -39,18 +41,14 @@
                         <th colspan="2">Action</th>
                     </thead>
                     <tbody>
+                        <?php foreach ($topics as $key => $topic) : ?>
                         <tr>
-                            <td>1</td>
-                            <td>Travel</td>
-                            <td><a href="#" class="edit">Edit</a></td>
+                            <td><?= $key + 1; ?></td>
+                            <td><?= $topic['name']; ?></td>
+                            <td><a href="edit.php?id=<?= $topic['id']; ?>" class="edit">Edit</a></td>
                             <td><a href="#" class="delete">Delete</a></td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Tech</td>
-                            <td><a href="#" class="edit">Edit</a></td>
-                            <td><a href="#" class="delete">Delete</a></td>
-                        </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
