@@ -33,9 +33,8 @@
             </div>
             <div class="content">
                 <h2 class="page-title">Edit User</h2>
-                <form action="edit.php" method="POST">
-                    <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
-                    <input type="hidden" name="id" value="<?php echo $id; ?>" />
+                <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
+                <form action="create.php" method="POST">
                     <div>
                         <label for="username">Username:</label>
                         <input type="text" class="text-input" name="username" value="<?php echo $username; ?>" />
@@ -67,7 +66,9 @@
                         <?php endif; ?>
                     </div>
                     <div>
-                        <button type="submit" name="update-user" class="btn btn-big">Update User</button>
+                        <div>
+                            <button type="submit" name="create-admin" class="btn btn-big">Update User</button>
+                        </div>
                     </div>
                 </form>
             </div>

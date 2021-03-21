@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../../assets/css/style.css" />
     <!--Admin Styling-->
     <link rel="stylesheet" href="../../assets/css/admin.css" />
-    <title>Admin Section | Add Topics</title>
+    <title>Admin Section | Edit Posts</title>
 </head>
 
 <body>
@@ -27,22 +27,33 @@
         <!--Admin Content-->
         <div class="admin-content">
             <div class="button-group">
-                <a href="<?= BASE_URL . '/admin/topics/create.php'; ?>" class="btn btn-big">Add Topic</a>
-                <a href="<?= BASE_URL . '/admin/topics/index.php'; ?>" class="btn btn-big">Manage Topics</a>
+                <a href="create.php" class="btn btn-big">Add Post</a>
+                <a href="index.php" class="btn btn-big">Manage Posts</a>
             </div>
             <div class="content">
-                <h2 class="page-title">Add Topic</h2>
+                <h2 class="page-title">Edit Posts</h2>
                 <form action="create.php" method="POST">
                     <div>
-                        <label>Name</label>
-                        <input type="text" name="name" class="text-input" />
+                        <label>Title</label>
+                        <input type="text" name="title" class="text-input" />
                     </div>
                     <div>
-                        <label>Description</label>
+                        <label>Body</label>
                         <textarea id="editor"></textarea>
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-big">Add Topic</button>
+                        <label>Image</label>
+                        <input type="file" name="image" class="text-input" />
+                    </div>
+                    <div>
+                        <label>Topic</label>
+                        <select name="topic" class="text-input">
+                            <option value="travel">Travel</option>
+                            <option value="tech">Tech</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-big">Update post</button>
                     </div>
                 </form>
             </div>

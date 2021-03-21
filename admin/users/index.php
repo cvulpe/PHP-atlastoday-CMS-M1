@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../../assets/css/style.css" />
     <!--Admin Styling-->
     <link rel="stylesheet" href="../../assets/css/admin.css" />
-    <title>Admin Section | Add Topics</title>
+    <title>Admin Section | Manage Users</title>
 </head>
 
 <body>
@@ -27,24 +27,35 @@
         <!--Admin Content-->
         <div class="admin-content">
             <div class="button-group">
-                <a href="<?= BASE_URL . '/admin/topics/create.php'; ?>" class="btn btn-big">Add Topic</a>
-                <a href="<?= BASE_URL . '/admin/topics/index.php'; ?>" class="btn btn-big">Manage Topics</a>
+                <a href="create.php" class="btn btn-big">Add Users</a>
+                <a href="index.php" class="btn btn-big">Manage Users</a>
             </div>
             <div class="content">
-                <h2 class="page-title">Add Topic</h2>
-                <form action="create.php" method="POST">
-                    <div>
-                        <label>Name</label>
-                        <input type="text" name="name" class="text-input" />
-                    </div>
-                    <div>
-                        <label>Description</label>
-                        <textarea id="editor"></textarea>
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-big">Add Topic</button>
-                    </div>
-                </form>
+                <h2 class="page-title">Manage Users</h2>
+                <table>
+                    <thead>
+                        <th>N</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th colspan="2">Action</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Chris Nemo</td>
+                            <td>Admin</td>
+                            <td><a href="#" class="edit">Edit</a></td>
+                            <td><a href="#" class="delete">Delete</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Mark</td>
+                            <td>Author</td>
+                            <td><a href="#" class="edit">Edit</a></td>
+                            <td><a href="#" class="delete">Delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <!--End Admin Content-->

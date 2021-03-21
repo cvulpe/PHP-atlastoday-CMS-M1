@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../../assets/css/style.css" />
     <!--Admin Styling-->
     <link rel="stylesheet" href="../../assets/css/admin.css" />
-    <title>Admin Section | Edit Users</title>
+    <title>Admin Section | Add Users</title>
 </head>
 
 <body>
@@ -32,10 +32,9 @@
                 <a href="index.php" class="btn btn-big">Manage Users</a>
             </div>
             <div class="content">
-                <h2 class="page-title">Edit User</h2>
-                <form action="edit.php" method="POST">
-                    <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
-                    <input type="hidden" name="id" value="<?php echo $id; ?>" />
+                <h2 class="page-title">Add User</h2>
+                <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
+                <form action="create.php" method="POST">
                     <div>
                         <label for="username">Username:</label>
                         <input type="text" class="text-input" name="username" value="<?php echo $username; ?>" />
@@ -67,7 +66,9 @@
                         <?php endif; ?>
                     </div>
                     <div>
-                        <button type="submit" name="update-user" class="btn btn-big">Update User</button>
+                        <div>
+                            <button type="submit" name="create-admin" class="btn btn-big">Add User</button>
+                        </div>
                     </div>
                 </form>
             </div>
