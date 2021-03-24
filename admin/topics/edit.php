@@ -42,7 +42,7 @@
                     </div>
                     <div>
                         <label>Description:</label><br />
-                        <textarea name="description" id="body"><?= $description; ?></textarea>
+                        <textarea name="description" id="editor"><?= $description; ?></textarea>
                     </div>
                     <div>
                         <button type="submit" name="update-topic" class="btn btn-big">Update Topic</button>

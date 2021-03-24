@@ -46,7 +46,7 @@
                             <td><?= $key + 1; ?></td>
                             <td><?= $topic['name']; ?></td>
                             <td><a href="edit.php?id=<?= $topic['id']; ?>" class="edit">Edit</a></td>
-                            <td><a href="#" class="delete">Delete</a></td>
+                            <td><a href="index.php?del_id=<?= $topic['id']; ?>" class="delete">Delete</a></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

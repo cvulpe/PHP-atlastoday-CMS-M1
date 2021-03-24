@@ -33,14 +33,15 @@
             </div>
             <div class="content">
                 <h2 class="page-title">Add Topic</h2>
+                <?php include(ROOT_PATH . '/app/helpers/formErrors.php'); ?>
                 <form action="create.php" method="POST">
                     <div>
                         <label>Name</label>
-                        <input type="text" name="name" class="text-input" />
+                        <input type="text" name="name" class="text-input" value="<?= $name ?>" />
                     </div>
                     <div>
                         <label>Description</label>
-                        <textarea id="editor" name="description"></textarea>
+                        <textarea id="editor" name="description"><?= $description; ?></textarea>
                     </div>
                     <div>
                         <button type="submit" class="btn btn-big" name="add-topic">Add Topic</button>

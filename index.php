@@ -1,5 +1,5 @@
 <?php include("path.php"); ?>
-<?php include(ROOT_PATH . '/app/database/db.php'); ?>
+<?php include(ROOT_PATH . '/app/controllers/topics.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -144,13 +144,9 @@
                 <div class="section topics">
                     <h2 class="section-title">Topics</h2>
                     <ul>
-                        <li><a href="#">Technology</a></li>
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Motivation</a></li>
-                        <li><a href="#">Inspiration</a></li>
-                        <li><a href="#">Self Learn</a></li>
-                        <li><a href="#">Meditation</a></li>
-                        <li><a href="#">Well Being</a></li>
+                        <?php foreach ($topics as $key => $topic) : ?>
+                        <li><a href="#"><?= $topic['name']; ?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
