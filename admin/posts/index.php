@@ -1,4 +1,5 @@
 <?php include("../../path.php"); ?>
+<?php include(ROOT_PATH . "/app/controllers/posts.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,22 +41,20 @@
                         <th colspan="3">Action</th>
                     </thead>
                     <tbody>
+                        <?php foreach ($posts as $key => $post) : ?>
                         <tr>
-                            <td>1</td>
-                            <td>This is the first post</td>
-                            <td>Chris Nemo</td>
+                            <td><?= $key + 1; ?></td>
+                            <td><?= $post['title']; ?></td>
+                            <td>Nemo</td>
                             <td><a href="#" class="edit">Edit</a></td>
                             <td><a href="#" class="delete">Delete</a></td>
+                            <?php if ($post['published']) : ?>
+                            <td><a href="#" class="unpublish">Unpublish</a></td>
+                            <?php else : ?>
                             <td><a href="#" class="publish">Publish</a></td>
+                            <?php endif; ?>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>This is the second post</td>
-                            <td>Chris Nemo</td>
-                            <td><a href="#" class="edit">Edit</a></td>
-                            <td><a href="#" class="delete">Delete</a></td>
-                            <td><a href="#" class="publish">Publish</a></td>
-                        </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

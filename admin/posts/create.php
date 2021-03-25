@@ -1,5 +1,5 @@
 <?php include("../../path.php"); ?>
-
+<?php include(ROOT_PATH . "/app/controllers/posts.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,7 @@
                     </div>
                     <div>
                         <label>Body</label>
-                        <textarea id="editor"></textarea>
+                        <textarea id="editor" name="body"></textarea>
                     </div>
                     <div>
                         <label>Image</label>
@@ -48,9 +48,11 @@
                     </div>
                     <div>
                         <label>Topic</label>
-                        <select name="topic" class="text-input">
-                            <option value="travel">Travel</option>
-                            <option value="tech">Tech</option>
+                        <select name="topic_id" class="text-input">
+                            <option value=""></option>
+                            <?php foreach ($topics as $key => $topic) : ?>
+                            <option value="<?= $topic['id']; ?>"><?= $topic['name']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div>
