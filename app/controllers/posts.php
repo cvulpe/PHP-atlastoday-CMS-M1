@@ -33,7 +33,6 @@ if (isset($_GET['del_id'])) {
 if (isset($_GET['published']) && isset($_GET['p_id'])) {
     $published = $_GET['published'];
     $p_id = $_GET['p_id'];
-    //* Update post status (published/unpublished)
     $count = update($table, $p_id, ['published' => $published]);
 
     $_SESSION['message'] = "Post published state change!";
