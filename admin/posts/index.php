@@ -47,10 +47,10 @@
                             <td><?= $key + 1; ?></td>
                             <td><?= $post['title']; ?></td>
                             <td>Nemo</td>
-                            <td><a href="#" class="edit">Edit</a></td>
-                            <td><a href="#" class="delete">Delete</a></td>
+                            <td><a href="edit.php?id=<?= $post['id']; ?>" class="edit">Edit</a></td>
+                            <td><a href="edit.php?del_id=<?= $post['id']; ?>" class="delete">Delete</a></td>
                             <?php if ($post['published']) : ?>
-                            <td><a href="#" class="unpublish">Unpublish</a></td>
+                            <td><a href=" #" class="unpublish">Unpublish</a></td>
                             <?php else : ?>
                             <td><a href="#" class="publish">Publish</a></td>
                             <?php endif; ?>
