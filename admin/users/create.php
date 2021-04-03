@@ -37,20 +37,19 @@
                 <form action="create.php" method="POST">
                     <div>
                         <label for="username">Username:</label>
-                        <input type="text" class="text-input" name="username" value="<?php echo $username; ?>" />
+                        <input type="text" class="text-input" name="username" value="<?= $username; ?>" />
                     </div>
                     <div>
                         <label for="email">Email:</label>
-                        <input type="email" class="text-input" name="email" value="<?php echo $email; ?>" />
+                        <input type="email" class="text-input" name="email" value="<?= $email; ?>" />
                     </div>
                     <div>
                         <label for="password">Password</label>
-                        <input type="password" class="text-input" name="password" value="<?php echo $password; ?>" />
+                        <input type="password" class="text-input" name="password" value="<?= $password; ?>" />
                     </div>
                     <div>
                         <label for="passwordConf">Repeat password:</label>
-                        <input type="password" class="text-input" name="passwordConf"
-                            value="<?php echo $passwordConf; ?>" />
+                        <input type="password" class="text-input" name="passwordConf" value="<?= $passwordConf; ?>" />
                     </div>
                     <div>
                         <?php if (isset($admin) && $admin == 1) : ?>

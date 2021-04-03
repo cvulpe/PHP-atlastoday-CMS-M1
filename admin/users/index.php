@@ -38,24 +38,19 @@
                     <thead>
                         <th>N</th>
                         <th>Username</th>
-                        <th>Role</th>
+                        <th>Email</th>
                         <th colspan="2">Action</th>
                     </thead>
                     <tbody>
+                        <?php foreach ($adminUsers as $key => $user) : ?>
                         <tr>
-                            <td>1</td>
-                            <td>Chris Nemo</td>
-                            <td>Admin</td>
-                            <td><a href="#" class="edit">Edit</a></td>
-                            <td><a href="#" class="delete">Delete</a></td>
+                            <td><?= $key + 1; ?></td>
+                            <td><?= $user['username']; ?></td>
+                            <td><?= $user['email']; ?></td>
+                            <td><a href="edit.php?id=<?= $user['id']; ?>" class="edit">Edit</a></td>
+                            <td><a href="index.php?del_id=<?= $user['id']; ?>" class="delete">Delete</a></td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Mark</td>
-                            <td>Author</td>
-                            <td><a href="#" class="edit">Edit</a></td>
-                            <td><a href="#" class="delete">Delete</a></td>
-                        </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
