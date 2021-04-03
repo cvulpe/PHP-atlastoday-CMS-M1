@@ -32,11 +32,11 @@ function loginUser($user)
     exit();
 }
 
-if (isset($_POST['register-btn']) || isset($_POST['create-admin'])) {
+if (isset($_POST['register-btn']) || isset($_POST['add-admin'])) {
     $errors = validateUser($_POST);
 
     if (count($errors) === 0) {
-        unset($_POST['register-btn'], $_POST['passwordConf'], $_POST['create-admin']);
+        unset($_POST['register-btn'], $_POST['passwordConf'], $_POST['add-admin']);
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
         if (isset($_POST['admin'])) {
             $_POST['admin'] = 1;
@@ -61,12 +61,12 @@ if (isset($_POST['register-btn']) || isset($_POST['create-admin'])) {
     }
 }
 
-if (isset($_POST['update_user'])) {
+if (isset($_POST['update-admin'])) {
     $errors = validateUser($_POST);
 
     if (count($errors) === 0) {
         $id = $_POST['id'];
-        unset($_POST['passwordConf'], $_POST['update_user'], $_POST['id']);
+        unset($_POST['passwordConf'], $_POST['update-admin'], $_POST['id']);
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
         $_POST['admin'] = isset($_POST['admin']) ? 1 : 0;

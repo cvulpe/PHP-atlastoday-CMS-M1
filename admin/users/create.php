@@ -66,7 +66,7 @@
                     </div>
                     <div>
                         <div>
-                            <button type="submit" name="create-admin" class="btn btn-big">Add User</button>
+                            <button type="submit" name="add-admin" class="btn btn-big">Add User</button>
                         </div>
                     </div>
                 </form>

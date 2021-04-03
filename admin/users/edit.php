@@ -67,7 +67,7 @@
                     </div>
                     <div>
                         <div>
-                            <button type="submit" name="update_user" class="btn btn-big">Update User</button>
+                            <button type="submit" name="update-admin" class="btn btn-big">Update User</button>
                         </div>
                     </div>
                 </form>
