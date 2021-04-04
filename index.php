@@ -1,5 +1,8 @@
 <?php include("path.php"); ?>
 <?php include(ROOT_PATH . '/app/controllers/topics.php'); ?>
+<?php
+$posts = getPublishedPosts();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,51 +30,17 @@
             <i class="fas fa-chevron-left prev"></i>
             <i class="fas fa-chevron-right next"></i>
             <div class="post-wrapper">
+                <?php foreach ($posts as $post) : ?>
                 <div class="post">
-                    <img src="assets/images/plan.png" alt="" class="slider-image">
+                    <img src="<?= BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="slider-image">
                     <div class="post-info">
-                        <h4><a href="single.html">Start planning for your next vacation.</a></h4>
-                        <i class="far fa-user">Chris Nemo</i>
+                        <h4><a href="single.php"><?= $post['title']; ?></a></h4>
+                        <i class="far fa-user"><?= $post['username']; ?></i>
                         &nbsp;
-                        <i class="far fa-calendar">Mar 9, 2019</i>
+                        <i class="far fa-calendar"><?= date('F j, Y', strtotime($post['created_at'])); ?></i>
                     </div>
                 </div>
-                <div class="post">
-                    <img src="assets/images/plan.png" alt="" class="slider-image">
-                    <div class="post-info">
-                        <h4><a href="single.html">Start planning for your next vacation.</a></h4>
-                        <i class="far fa-user">Chris Nemo</i>
-                        &nbsp;
-                        <i class="far fa-calendar">Mar 9, 2019</i>
-                    </div>
-                </div>
-                <div class="post">
-                    <img src="assets/images/plan.png" alt="" class="slider-image">
-                    <div class="post-info">
-                        <h4><a href="single.html">Start planning for your next vacation.</a></h4>
-                        <i class="far fa-user">Chris Nemo</i>
-                        &nbsp;
-                        <i class="far fa-calendar">Mar 9, 2019</i>
-                    </div>
-                </div>
-                <div class="post">
-                    <img src="assets/images/plan.png" alt="" class="slider-image">
-                    <div class="post-info">
-                        <h4><a href="single.html">Start planning for your next vacation.</a></h4>
-                        <i class="far fa-user">Chris Nemo</i>
-                        &nbsp;
-                        <i class="far fa-calendar">Mar 9, 2019</i>
-                    </div>
-                </div>
-                <div class="post">
-                    <img src="assets/images/plan.png" alt="" class="slider-image">
-                    <div class="post-info">
-                        <h4><a href="single.html">Start planning for your next vacation.</a></h4>
-                        <i class="far fa-user">Chris Nemo</i>
-                        &nbsp;
-                        <i class="far fa-calendar">Mar 9, 2019</i>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
         <!--End Slider-->
@@ -81,58 +50,19 @@
                 <h1 class="recent-post-title">
                     Recent Posts
                 </h1>
+                <?php foreach ($posts as $post) : ?>
                 <div class="post clearfix">
-                    <img src="assets/images/travel.png" alt="" class="post-image">
+                    <img src="<?= BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="post-image">
                     <div class="post-preview">
-                        <h3><a href="single.html">Get ready for your dream destination.</a></h3>
-                        <i class="far fa-user">Chris Nemo</i>
+                        <h3><a href="single.php"><?= $post['title']; ?></a></h3>
+                        <i class="far fa-user"><?= $post['username']; ?></i>
                         &nbsp;
-                        <i class="far fa-calendar">Apr 04, 2019</i>
-                        <p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque porro,
-                            natus commodi at dolor sint?
-                        </p>
-                        <a href="single.html" class="btn read-more">Read More</a>
+                        <i class="far fa-calendar"><?= date('F j, Y', strtotime($post['created_at'])); ?></i>
+                        <p class="preview-text"><?= html_entity_decode(substr($post['body'], 0, 150) . '...'); ?></p>
+                        <a href="single.php" class="btn read-more">Read More</a>
                     </div>
                 </div>
-                <div class="post clearfix">
-                    <img src="assets/images/travel.png" alt="" class="post-image">
-                    <div class="post-preview">
-                        <h3><a href="single.html">Get ready for your dream destination.</a></h3>
-                        <i class="far fa-user">Chris Nemo</i>
-                        &nbsp;
-                        <i class="far fa-calendar">Apr 04, 2019</i>
-                        <p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque porro,
-                            natus commodi at dolor sint?
-                        </p>
-                        <a href="single.html" class="btn read-more">Read More</a>
-                    </div>
-                </div>
-                <div class="post clearfix">
-                    <img src="assets/images/travel.png" alt="" class="post-image">
-                    <div class="post-preview">
-                        <h3><a href="single.html">Get ready for your dream destination.</a></h3>
-                        <i class="far fa-user">Chris Nemo</i>
-                        &nbsp;
-                        <i class="far fa-calendar">Apr 04, 2019</i>
-                        <p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque porro,
-                            natus commodi at dolor sint?
-                        </p>
-                        <a href="single.html" class="btn read-more">Read More</a>
-                    </div>
-                </div>
-                <div class="post clearfix">
-                    <img src="assets/images/travel.png" alt="" class="post-image">
-                    <div class="post-preview">
-                        <h3><a href="single.html">Get ready for your dream destination.</a></h3>
-                        <i class="far fa-user">Chris Nemo</i>
-                        &nbsp;
-                        <i class="far fa-calendar">Apr 04, 2019</i>
-                        <p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque porro,
-                            natus commodi at dolor sint?
-                        </p>
-                        <a href="single.html" class="btn read-more">Read More</a>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
             <div class="sidebar">
                 <div class="section search">
