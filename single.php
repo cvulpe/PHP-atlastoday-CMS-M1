@@ -1,4 +1,14 @@
 <?php include("path.php"); ?>
+<?php include(ROOT_PATH . '/app/controllers/posts.php'); ?>
+
+<?php
+if (isset($_GET['id'])) {
+    $post = selectOne('posts', ['id' => $_GET['id']]);
+}
+$topics = selectAll('topics');
+$posts = selectAll('posts', ['published' => 1]);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +19,7 @@
     <script src="https://kit.fontawesome.com/deacd0cdf3.js" crossorigin="anonymous"></script>
     <!--Google Fonts-->
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>ATLAS Today | Post</title>
+    <title><?= $post['title']; ?> | AtlasToday</title>
 </head>
 
 <body>
@@ -21,50 +31,9 @@
             <!--Main Content Wrapper-->
             <div class="main-content-wrapper">
                 <div class="main-content-single">
-                    <h1 class="post-title">This is the post title</h1>
+                    <h1 class="post-title"><?= $post['title']; ?> | AtlasToday</h1>
                     <div class="post-content">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Explicabo enim inventore sint autem quam distinctio!
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor
-                            ipsam quis debitis blanditiis autem quas mollitia rem
-                            exercitationem maxime! Eveniet commodi voluptatem, sunt possimus
-                            aspernatur culpa inventore aliquam fugit numquam.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad
-                            magnam ea nulla? Iure magni ipsam sunt ab mollitia tempore
-                            reprehenderit cupiditate, unde accusamus, molestiae corporis,
-                            aliquam odit praesentium. Aut sunt autem, laudantium voluptatum
-                            eligendi reprehenderit temporibus ipsa. Sint, facilis sed.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                            reiciendis.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Explicabo enim inventore sint autem quam distinctio!
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor
-                            ipsam quis debitis blanditiis autem quas mollitia rem
-                            exercitationem maxime! Eveniet commodi voluptatem, sunt possimus
-                            aspernatur culpa inventore aliquam fugit numquam.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad
-                            magnam ea nulla? Iure magni ipsam sunt ab mollitia tempore
-                            reprehenderit cupiditate, unde accusamus, molestiae corporis,
-                            aliquam odit praesentium. Aut sunt autem, laudantium voluptatum
-                            eligendi reprehenderit temporibus ipsa. Sint, facilis sed.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                            reiciendis.
-                        </p>
+                        <?= html_entity_decode($post['body']); ?>
                     </div>
                 </div>
             </div>
@@ -73,35 +42,24 @@
             <div class="sidebar single">
                 <div class="section popular">
                     <h2 class="section-title">Popular</h2>
+                    <?php foreach ($posts as $p) : ?>
+                    <!--Renamed var as "p" to avoid confusion between sidebar post and regular post-->
                     <div class="post clearfix">
-                        <img src="assets/images/fear.png" alt="" />
+                        <img src="<?= BASE_URL . '/assets/images/' . $p['image']; ?>" alt="" />
                         <a href="#" class="title">
-                            <h4>How to overcome your fears</h4>
+                            <h4><?= $p['title']; ?></h4>
                         </a>
                     </div>
-                    <div class="post clearfix">
-                        <img src="assets/images/fear.png" alt="" />
-                        <a href="#" class="title">
-                            <h4>How to overcome your fears</h4>
-                        </a>
-                    </div>
-                    <div class="post clearfix">
-                        <img src="assets/images/fear.png" alt="" />
-                        <a href="#" class="title">
-                            <h4>How to overcome your fears</h4>
-                        </a>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
                 <div class="section topics">
                     <h2 class="section-title">Topics</h2>
                     <ul>
-                        <li><a href="#">Technology</a></li>
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Motivation</a></li>
-                        <li><a href="#">Inspiration</a></li>
-                        <li><a href="#">Self Learn</a></li>
-                        <li><a href="#">Meditation</a></li>
-                        <li><a href="#">Well Being</a></li>
+                        <?php foreach ($topics as $topic) : ?>
+                        <li><a
+                                href="<?= BASE_URL . '/index.php?t_id=' . $topic['id'] . '&name=' . $topic['name']; ?>"><?= $topic['name']; ?></a>
+                        </li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>

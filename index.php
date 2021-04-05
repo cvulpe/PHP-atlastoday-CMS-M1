@@ -2,9 +2,12 @@
 <?php include(ROOT_PATH . '/app/controllers/topics.php'); ?>
 <?php
 $posts = array();
-$postTitlt = 'Recent Posts';
+$postsTitle = 'Recent Posts';
 
-if (isset($_POST['search-term'])) {
+if (isset($_GET['t_id'])) {
+    $posts = getPostsByTopicId($_GET['t_id']);
+    $postsTitle = "You searched for posts under: " . $_GET['name'];
+} else if (isset($_POST['search-term'])) {
     $postsTitle = "You searched for: " . $_POST['search-term'];
     $posts = searchPosts($_POST['search-term']);
 } else {
@@ -44,7 +47,7 @@ if (isset($_POST['search-term'])) {
                 <div class="post">
                     <img src="<?= BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="slider-image">
                     <div class="post-info">
-                        <h4><a href="single.php"><?= $post['title']; ?></a></h4>
+                        <h4><a href="single.php?id=<?= $post['id']; ?>"><?= $post['title']; ?></a></h4>
                         <i class="far fa-user"><?= $post['username']; ?></i>
                         &nbsp;
                         <i class="far fa-calendar"><?= date('F j, Y', strtotime($post['created_at'])); ?></i>
@@ -64,12 +67,12 @@ if (isset($_POST['search-term'])) {
                 <div class="post clearfix">
                     <img src="<?= BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="post-image">
                     <div class="post-preview">
-                        <h3><a href="single.php"><?= $post['title']; ?></a></h3>
+                        <h3><a href="single.php?id=<?= $post['id']; ?>"><?= $post['title']; ?></a></h3>
                         <i class="far fa-user"><?= $post['username']; ?></i>
                         &nbsp;
                         <i class="far fa-calendar"><?= date('F j, Y', strtotime($post['created_at'])); ?></i>
                         <p class="preview-text"><?= html_entity_decode(substr($post['body'], 0, 150) . '...'); ?></p>
-                        <a href="single.php" class="btn read-more">Read More</a>
+                        <a href="single.php?id=<?= $post['id']; ?>" class="btn read-more">Read More</a>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -85,7 +88,9 @@ if (isset($_POST['search-term'])) {
                     <h2 class="section-title">Topics</h2>
                     <ul>
                         <?php foreach ($topics as $key => $topic) : ?>
-                        <li><a href="#"><?= $topic['name']; ?></a></li>
+                        <li><a
+                                href="<?= BASE_URL . '/index.php?t_id=' . $topic['id'] . '&name=' . $topic['name']; ?>"><?= $topic['name']; ?></a>
+                        </li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
